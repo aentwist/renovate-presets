@@ -1,0 +1,29 @@
+.not_scheduled: &not-scheduled
+  rules:
+    - if: $CI_PIPELINE_SOURCE != "schedule"
+
+lint:code:
+  image: python:3.12.0-slim-bookworm@sha256:32477c7ecb3b18a47cff8eb5b8149bc21c858998b0ae2bb36f4ddb43cc79d240
+  variables:
+    PIP_CACHE_DIR: .cache/pip
+    PRE_COMMIT_HOME: .cache/pre-commit
+  cache:
+    paths:
+      - .cache
+  stage: test
+  before_script: |-
+    apt update && apt install -y git
+    pip install pre-commit==3.5.0
+  script: pre-commit run --all-files prettier
+  <<: *not-scheduled
+
+lint:commits:
+  image: node:20.9.0-alpine3.18@sha256:8e015de364a2eb2ed7c52a558e9f716dcb615560ffd132234087c10ccc1f2c63
+  cache:
+    paths:
+      - .npm
+  stage: test
+  # Versions should match pre-commit config
+  before_script: npm i -g --cache .npm --prefer-offline commitlint@18.2.0 @commitlint/config-conventional@18.1.0
+  script: commitlint --from
+  <<: *not-scheduled

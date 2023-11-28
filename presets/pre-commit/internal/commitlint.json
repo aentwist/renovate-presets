@@ -1,0 +1,20 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+
+  "packageRules": [
+    {
+      "groupName": "commitlint",
+      "matchPackageNames": [
+        "commitlint",
+        "aentwist/pre-commit-mirrors-commitlint"
+      ]
+    },
+
+    {
+      "matchPackagePatterns": ["commitlint"],
+      "extends": [
+        "github>aentwist/renovate//presets/pre-commit/internal/_additional-dependencies"
+      ]
+    }
+  ]
+}

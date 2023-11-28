@@ -1,0 +1,9 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "github>aentwist/renovate//presets/pre-commit/internal/default",
+    "github>aentwist/renovate//presets/pre-commit/internal/eslint",
+    "github>aentwist/renovate//presets/pre-commit/internal/prettier",
+    "github>aentwist/renovate//presets/pre-commit/internal/commitlint"
+  ]
+}

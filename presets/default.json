@@ -1,0 +1,22 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": ["config:best-practices", ":preserveSemverRanges"],
+
+  "packageRules": [
+    {
+      "description": "Require manual approval and review for major updates",
+      "matchUpdateTypes": ["major"],
+      "dependencyDashboardApproval": true
+    },
+    {
+      "description": "Do not require manual action or review for minor updates",
+      "matchUpdateTypes": ["minor", "patch", "pin", "digest"],
+      "automerge": true
+    },
+    {
+      "description": "Add an exception for major version zero; see also https://github.com/renovatebot/renovate/issues/24513",
+      "matchCurrentVersion": "/^0\\./",
+      "automerge": false
+    }
+  ]
+}

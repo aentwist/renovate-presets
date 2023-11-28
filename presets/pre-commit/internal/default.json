@@ -1,0 +1,7 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    ":enablePreCommit",
+    "github>aentwist/renovate//presets/pre-commit/internal/npm-unpublish-safe"
+  ]
+}

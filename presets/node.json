@@ -1,0 +1,19 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": ["npm:unpublishSafe"],
+
+  "postUpdateOptions": ["npmDedupe"],
+
+  "packageRules": [
+    {
+      "description": "Only use LTS node releases (even-valued major versions)",
+      "matchPackageNames": ["node", "@types/node"],
+      "allowedVersions": "/^v?\\d*[02468]\\./"
+    },
+
+    {
+      "groupName": "jsdom",
+      "matchPackagePatterns": "jsdom"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "description": "Wait to update pre-commit hook repos for npm-based packages until they are npm unpublish-safe; see https://docs.renovatebot.com/presets-npm/#npmunpublishsafe",
+
+  "packageRules": [
+    {
+      "matchPackagePatterns": [
+        "pre-commit[/-]mirrors-(?:eslint|prettier|commitlint)"
+      ],
+      "minimumReleaseAge": "3 days"
+    }
+  ]
+}

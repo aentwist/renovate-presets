@@ -1,0 +1,7 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "description": "https://about.gitlab.com/handbook/engineering/metrics/#work-type-classification",
+
+  "labels": ["type::maintenance", "maintenance::dependency"],
+  "dependencyDashboardLabels": ["type::maintenance", "maintenance::dependency"]
+}
