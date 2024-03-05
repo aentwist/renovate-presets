@@ -18,7 +18,7 @@ lint:code:
   <<: *not-scheduled
 
 lint:commits:
-  image: node:20.9.0-alpine3.18@sha256:cb2301e2c5fe3165ba2616591efe53b4b6223849ac0871c138f56d5f7ae8be4b
+  image: node:20.11.1-alpine3.18@sha256:a02826c7340c37a29179152723190bcc3044f933c925f3c2d78abb20f794de3f
   cache:
     paths:
       - .npm
