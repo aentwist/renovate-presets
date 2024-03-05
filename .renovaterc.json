@@ -2,6 +2,7 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
     "github>aentwist/renovate//presets/default",
-    "github>aentwist/renovate//presets/pre-commit/internal/default"
+    "github>aentwist/renovate//presets/pre-commit/internal/default",
+    ":skipStatusChecks"
   ]
 }
