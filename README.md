@@ -24,7 +24,7 @@ Feel free to combine these with other presets, such as Renovate [default presets
 
 `github>aentwist/renovate//presets/default`
 
-- Extends [`config:best-practices`](https://docs.renovatebot.com/presets-config/#configbest-practices) and [`:preserveSemverRanges`](https://docs.renovatebot.com/presets-default/#preservesemverranges)
+- Extends [`config:best-practices`](https://docs.renovatebot.com/presets-config/#configbest-practices), [`:preserveSemverRanges`](https://docs.renovatebot.com/presets-default/#preservesemverranges), and [`:automergeBranch`](https://docs.renovatebot.com/presets-default/#automergebranch)
 - Require manual action for major updates
 - Automerge minor updates except major version zero
 
