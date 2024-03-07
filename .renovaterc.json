@@ -3,6 +3,8 @@
   "extends": [
     "github>aentwist/renovate//presets/default",
     "github>aentwist/renovate//presets/pre-commit/internal/default",
+    "github>aentwist/renovate//presets/pre-commit/internal/prettier",
+    "github>aentwist/renovate//presets/pre-commit/internal/commitlint",
     ":skipStatusChecks"
   ]
 }

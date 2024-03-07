@@ -12,5 +12,5 @@ repos:
       - id: commitlint
         stages: [commit-msg]
         additional_dependencies:
-          - commitlint@18.4.1
+          - commitlint@18.6.1
           - "@commitlint/config-conventional@18.1.0"
