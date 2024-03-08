@@ -5,13 +5,6 @@
     {
       "groupName": "eslint",
       "matchPackageNames": ["eslint", "pre-commit/mirrors-eslint"]
-    },
-
-    {
-      "matchPackagePatterns": ["eslint"],
-      "extends": [
-        "github>aentwist/renovate//presets/pre-commit/internal/_additional-dependencies"
-      ]
     }
   ]
 }

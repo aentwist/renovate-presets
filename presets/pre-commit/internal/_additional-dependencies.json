@@ -1,5 +1,0 @@
-{
-  "description": "Manual action required until https://github.com/renovatebot/renovate/issues/20780",
-  "dependencyDashboardApproval": true,
-  "automerge": false
-}

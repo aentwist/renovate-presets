@@ -12,5 +12,7 @@ repos:
       - id: commitlint
         stages: [commit-msg]
         additional_dependencies:
+          # renovate: datasource=npm
           - commitlint@19.0.3
+          # renovate: datasource=npm
           - "@commitlint/config-conventional@19.0.3"

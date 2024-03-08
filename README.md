@@ -45,9 +45,42 @@ Feel free to combine these with other presets, such as Renovate [default presets
 
 ### pre-commit/\*
 
+- Add a custom manager for `additional_dependencies`\*
+- Group pre-commit mirrors / hook repos with their respective packages
 - Wait to update pre-commit hook repos for npm-based packages until they are unpublish-safe
-- Group pre-commit hook repos with their respective packages
-- Require manual action for additional dependencies (see https://github.com/renovatebot/renovate/issues/20780)
+
+<details>
+  <summary>*Custom manager for <code>additional_dependencies</code></summary>
+
+Adding handling for `additional_dependencies` to Renovate [is not trivial](https://github.com/renovatebot/renovate/issues/20780#issuecomment-1984977877). Ideally this will be implemented someday. Until then, a custom manager with a regular expression has been implemented to accomplish the same task. For it to match your `additional_dependencies` you must include a special comment above each one.
+
+`# renovate: KEY=VALUE...`
+
+It **MUST** specify the datasource. For example, `datasource=npm`.
+<br>
+It **MAY** specify the versioning (default: semver). Add a versioning token after the datasource token, delimited by a space. For example, `versioning=pep440`.
+
+Here is a config example,
+
+_.pre-commit-config.yaml_
+
+```yaml
+repos:
+  - repo: https://github.com/aentwist/pre-commit-mirrors-commitlint
+    rev: v19.0.3
+    hooks:
+      - id: commitlint
+        stages: [commit-msg]
+        additional_dependencies:
+          # renovate: datasource=npm
+          - commitlint@19.0.3
+          # renovate: datasource=npm
+          - "@commitlint/config-conventional@19.0.3"
+```
+
+For more information, see [Custom Manager Support using Regex](https://docs.renovatebot.com/modules/manager/regex/#required-fields).
+
+</details>
 
 ### [pre-commit/javascript](presets/pre-commit/javascript.json)
 

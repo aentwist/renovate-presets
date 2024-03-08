@@ -1,0 +1,15 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "description": "Custom manager for pre-commit `additional_dependencies`; see https://github.com/renovatebot/renovate/issues/20780",
+
+  "customManagers": [
+    {
+      "customType": "regex",
+      "fileMatch": ["^.pre-commit-config.yaml$"],
+      "matchStrings": [
+        "# renovate: datasource=(?<datasource>.*?)( versioning=(?<versioning>.*?))?\\s+-\\s+['\"]?(?<depName>@?[^@]+)(?:@(?<currentValue>[^'\"\\s]*))?"
+      ],
+      "versioningTemplate": "{{#if versioning}}{{{versioning}}}{{else}}semver{{/if}}"
+    }
+  ]
+}
