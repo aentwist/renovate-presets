@@ -20,6 +20,7 @@
     {
       "description": "Add an exception for major version zero; see also https://github.com/renovatebot/renovate/issues/24513",
       "matchCurrentVersion": "/^0\\./",
+      "dependencyDashboardApproval": true,
       "automerge": false
     }
   ]
