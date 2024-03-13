@@ -1,0 +1,48 @@
+.platform: &platform
+  runs-on: ubuntu-latest
+  container:
+    image: python:3.12.2-slim-bookworm@sha256:5c73034c2bc151596ee0f1335610735162ee2b148816710706afec4757ad5b1e
+
+.pre-commit-env: &pre-commit-env
+  env:
+    PIP_CACHE_DIR: .cache/pip
+    PRE_COMMIT_HOME: .cache/pre-commit
+
+.steps:
+  - &checkout
+    name: Check out repository code
+    uses: actions/checkout@v4
+  - &cache-pre-commit
+    name: Cache pre-commit and pre-commit hooks
+    uses: actions/cache@v4
+    with:
+      path: .cache
+  - &install-pre-commit
+    name: Install pre-commit
+    run: |
+      apt update
+      apt install -y git
+      pip install -r requirements.txt
+
+name: lint
+on: push
+jobs:
+  lint-commits:
+    <<: *platform
+    <<: *pre-commit-env
+    steps:
+      - *checkout
+      - *cache-pre-commit
+      - *install-pre-commit
+      - name: Check all commit messages
+        run: pre-commit run --hook-stage=manual commitlint-all
+
+  format:
+    <<: *platform
+    <<: *pre-commit-env
+    steps:
+      - *checkout
+      - *cache-pre-commit
+      - *install-pre-commit
+      - name: Check the formatting of all files
+        run: pre-commit run --all-files prettier
