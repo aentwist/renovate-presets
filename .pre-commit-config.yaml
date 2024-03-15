@@ -11,8 +11,12 @@ repos:
     hooks:
       - id: commitlint
         stages: [commit-msg]
-        additional_dependencies:
+        additional_dependencies: &commitlint-additional-dependencies
+          #
           # renovate: datasource=npm
           - commitlint@19.2.0
           # renovate: datasource=npm
           - "@commitlint/config-conventional@19.1.0"
+      - id: commitlint-all
+        stages: [manual]
+        additional_dependencies: *commitlint-additional-dependencies

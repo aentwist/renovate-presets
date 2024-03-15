@@ -1,0 +1,47 @@
+version: 2.1
+
+.docker: &docker
+  docker:
+    - image: python:3.12.2-slim-bookworm@sha256:36d57d7f9948fefe7b6092cfe8567da368033e71ba281b11bb9eeffce3d45bc6
+
+.environment: &environment
+  environment:
+    PIP_CACHE_DIR: .cache/pip
+    PRE_COMMIT_HOME: .cache/pre-commit
+
+jobs:
+  lint-commits:
+    <<: *docker
+    <<: *environment
+    steps:
+      - checkout
+      - &restore-cache
+        restore_cache: &cache-key
+          key: renovate-{{ checksum "requirements.txt" }}-{{ checksum ".pre-commit-config.yaml" }}
+      - &install-pre-commit
+        run: |
+          apt update
+          apt install -y git
+          pip install -r requirements.txt
+      - run: pre-commit run --hook-stage=manual --files .pre-commit-config.yaml commitlint-all
+      - &save-cache
+        save_cache:
+          <<: *cache-key
+          paths:
+            - .cache
+
+  format:
+    <<: *docker
+    <<: *environment
+    steps:
+      - checkout
+      - *restore-cache
+      - *install-pre-commit
+      - run: pre-commit run --all-files prettier
+      - *save-cache
+
+workflows:
+  lint:
+    jobs:
+      - lint-commits
+      - format
