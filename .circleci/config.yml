@@ -1,8 +1,9 @@
 version: 2.1
 
-.docker: &docker
+.platform: &platform
   docker:
     - image: python:3.12.2-slim-bookworm@sha256:36d57d7f9948fefe7b6092cfe8567da368033e71ba281b11bb9eeffce3d45bc6
+  resource_class: small
 
 .environment: &environment
   environment:
@@ -11,7 +12,7 @@ version: 2.1
 
 jobs:
   lint-commits:
-    <<: *docker
+    <<: *platform
     <<: *environment
     steps:
       - checkout
@@ -31,7 +32,7 @@ jobs:
             - .cache
 
   format:
-    <<: *docker
+    <<: *platform
     <<: *environment
     steps:
       - checkout
