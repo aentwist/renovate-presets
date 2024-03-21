@@ -1,9 +1,11 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "description": "Wait to update pre-commit hook repos for npm-based packages until they are npm unpublish-safe; see https://docs.renovatebot.com/presets-npm/#npmunpublishsafe",
+  "description": "Wait to update for npm-based packages until they are npm unpublish-safe; see https://docs.renovatebot.com/presets-npm/#npmunpublishsafe",
+  "extends": ["npm:unpublishSafe"],
 
   "packageRules": [
     {
+      "description": "pre-commit hook repos",
       "matchPackagePatterns": [
         "pre-commit[/-]mirrors-(?:eslint|prettier|commitlint)"
       ],
