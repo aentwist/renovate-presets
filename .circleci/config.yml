@@ -2,7 +2,7 @@ version: 2.1
 
 .platform: &platform
   docker:
-    - image: python:3.12.5-slim-bookworm@sha256:105e9d85a67db1602e70fa2bbb49c1e66bae7e3bdcb6259344fe8ca116434f74
+    - image: python:3.12.5-slim-bookworm@sha256:66eca1a0be6b978565f2d6e7f89daf4e1f1891380a2278feecf003d1537c7630
   resource_class: small
 
 .environment: &environment
