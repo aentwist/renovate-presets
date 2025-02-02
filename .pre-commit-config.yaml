@@ -16,7 +16,7 @@ repos:
           # renovate: datasource=npm
           - commitlint@19.6.1
           # renovate: datasource=npm
-          - "@commitlint/config-conventional@19.6.0"
+          - "@commitlint/config-conventional@19.7.1"
       - id: commitlint-all
         stages: [manual]
         additional_dependencies: *commitlint-additional-dependencies
