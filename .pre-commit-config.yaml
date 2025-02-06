@@ -7,7 +7,7 @@ repos:
       - id: prettier
 
   - repo: https://github.com/aentwist/pre-commit-mirrors-commitlint
-    rev: v19.6.1
+    rev: v19.7.1
     hooks:
       - id: commitlint
         stages: [commit-msg]
